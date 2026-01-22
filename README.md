@@ -1,7 +1,5 @@
-# aws-free-tier-otel-helm
-Terraform configurations to deploy OpenTelemetry project in aws free tier account
-
-# OpenTelemetry Demo on EKS (Terraform, Option A)
+# OpenTelemetry Project on EKS (Terraform, Helm)
+Terraform configurations to deploy OpenTelemetry project using Helm on aws free tier account
 
 This project creates:
 - A VPC (public+private subnets across 3 AZs)
