@@ -1,0 +1,24 @@
+# Expose the Frontend Proxy via a public AWS LoadBalancer
+components:
+  frontend-proxy:
+    service:
+      type: LoadBalancer
+      port: 8080
+
+  # Make load-generator schedulable on small nodes
+  load-generator:
+    enabled: true
+    env:
+      - name: LOCUST_USERS
+        value: "5"      # default 10
+      - name: LOCUST_SPAWN_RATE
+        value: "1"
+      - name: LOCUST_AUTOSTART
+        value: "true"
+    resources:
+      limits:
+        memory: 512Mi   # default is 1500Mi (too high for small nodes)
+
+# Sub-chart toggles (root-level keys)
+opensearch:
+  enabled: false        # Optional: disable the heaviest component on small clusters
